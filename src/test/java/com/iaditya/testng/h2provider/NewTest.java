@@ -13,6 +13,11 @@ import org.testng.annotations.Test;
 
 public class NewTest {
 
+	/**
+	 * DataProvider that reads from the H2 database
+	 * 
+	 * @return object array with test data
+	 */
 	@DataProvider(name="h2DataProvider")
 	public Object[][] loadH2Data() {
 		Object[][] data = null;
@@ -47,11 +52,21 @@ public class NewTest {
         return data;
     }
 		
+	/**
+	 * Simple test method that accepts a Map with testdata from the dataprovider
+	 * 
+	 * @param dataMap
+	 */
 	@Test(dataProvider="h2DataProvider")
 	public void testMethod1(Map<String, String> dataMap) {
 		Assert.assertEquals(dataMap.get("testMethod1"), "Doe");
 	}
 
+	/**
+	 * Simple test method that accepts a Map with testdata from the dataprovider
+	 * 
+	 * @param dataMap
+	 */
 	@Test(dataProvider="h2DataProvider")
 	public void testMethod2(Map<String, String> dataMap) {
 		Assert.assertEquals(dataMap.get("testMethod2"), "Doer");
